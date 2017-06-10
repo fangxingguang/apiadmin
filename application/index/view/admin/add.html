@@ -1,0 +1,111 @@
+<form class="am-form am-form-horizontal" action="/index/admin/add" method="post">
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">标题：</label>
+        <div class="am-u-sm-10">
+            <ul class="am-nav am-nav-pills">
+                <li><input type="text" name="title" style="width: 300px;"></li>
+                <li>
+                    <select name="pid" style="width: 200px;">
+                        <option value="0">顶级栏目</option>
+                        {volist name="menu" id="vo"}
+                            <option value="{$vo.id}">{$vo.title}</option>
+                            {volist name="vo.son" id="vo2"}
+                            <option value="{$vo2.id}">&nbsp;&nbsp;{$vo2.title}</option>
+                                {volist name="vo2.son" id="vo3"}
+                                <option value="{$vo3.id}">&nbsp;&nbsp;&nbsp;&nbsp;{$vo3.title}</option>
+                                {/volist}
+                            {/volist}
+                        {/volist}
+                    </select>
+                </li>
+                <li><input type="text" name="sort" placeholder="排序" value="{$maxSort}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">内容：</label>
+        <div class="am-u-sm-10">
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="content" type="text/plain">
+                <h3>
+    <span style="font-family:幼圆">接口描述：</span>
+</h3>
+<p style="text-indent:2em;">
+    描述信息
+</p>
+<h3>
+    <span style="font-family:幼圆">请求参数：</span>
+</h3>
+<table>
+    <tbody style="padding: 0px; margin: 0px; box-sizing: border-box;">
+        <tr class="firstRow">
+            <th style="border-color: rgb(221, 221, 221); word-break: break-all;">
+                <span style="font-weight: bold; text-align: center; background-color: rgb(247, 247, 247);">参数名</span>
+            </th>
+            <th style="border-color: rgb(221, 221, 221); word-break: break-all;">
+                <span style="font-weight: bold; text-align: center; background-color: rgb(247, 247, 247);">必填</span>
+            </th>
+            <th style="border-color: rgb(221, 221, 221); word-break: break-all;">
+                <span style="font-weight: bold; text-align: center; background-color: rgb(247, 247, 247);">类型</span>
+            </th>
+            <th style="border-color: rgb(221, 221, 221); word-break: break-all;">
+                <span style="font-weight: bold; text-align: center; background-color: rgb(247, 247, 247);">说明</span>
+            </th>
+        </tr>
+        <tr style="padding: 0px; margin: 0px; box-sizing: border-box; background-color: rgb(255, 255, 255); border-top: 1px solid rgb(204, 204, 204);">
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                Image_Id
+            </td>
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                是
+            </td>
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                string
+            </td>
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                镜像ID
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px; box-sizing: border-box; background-color: rgb(248, 248, 248); border-top: 1px solid rgb(204, 204, 204);">
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                Os_Type
+            </td>
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                是
+            </td>
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                string
+            </td>
+            <td style="padding: 6px 13px; margin: 0px; box-sizing: border-box; max-width: 300px; border-color: rgb(221, 221, 221);">
+                系统类型（Windows,Linux）
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3>
+    <span style="font-family:幼圆">返回结果：</span>
+</h3>
+<pre class="brush:js;toolbar:false;">json结果</pre>
+<p>
+    <br/>
+</p>
+            </script>
+        </div>
+    </div>
+
+    <div class="am-form-group">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
+            <button type="submit" class="am-btn am-btn-default">提交</button>
+        </div>
+    </div>
+</form>
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+</script>

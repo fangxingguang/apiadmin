@@ -1,0 +1,111 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>API文档</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="table">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="__STATIC__/AmazeUI/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__STATIC__/AmazeUI/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="__STATIC__/AmazeUI/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="__STATIC__/AmazeUI/assets/css/admin.css">
+    <style>
+        .text-overflow{
+            white-space: nowrap;word-break: keep-all;overflow: hidden;text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，页面暂不支持。 请 <a href="http://browsehappy.com/"
+                                                                 target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <strong>API文档</strong>
+        <small></small>
+    </div>
+
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+            {eq name="$admin" value="1"}
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    <span class="am-icon-users"></span> 操作管理 <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="/index/admin/add"><span class="am-icon-user"></span> 添加页面</a></li>
+                    <li><a href="/index/admin/export"><span class="am-icon-cog"></span> 导出word</a></li>
+                    <li><a href="/index/login/logout"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            {/eq}
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span
+                    class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <section data-am-widget="accordion" class="am-accordion am-accordion-basic" data-am-accordion='{"multiple": true}'>
+                {volist name="menu" id="vo"}
+                    <dl class="am-accordion-item <?php if(isset($api) && ($vo['id']==$api['pid'] || $vo['id']==$api['id'])){echo 'am-active';}?> ">
+                        <dt class="am-accordion-title">
+                        <a href="/show/{$vo.id}"> {$vo.title} </a>
+                        </dt>
+                        <dd class="am-accordion-bd am-collapse <?php if(isset($api) && ($vo['id']==$api['pid'] || $vo['id']==$api['id'])){echo 'am-in';}?>">
+                            <div class="am-accordion-content">
+                                {volist name="vo.son" id="vo2"}
+                                <div class="text-overflow" style="margin: 5px 0;">  <a href="/show/{$vo2.id}"><span class="am-icon-file-text-o"></span> {$vo2.title} </a></div>
+                                {/volist}
+                            </div>
+                        </dd>
+                    </dl>
+                {/volist}
+            </section>
+        </div>
+    </div>
+    <!-- sidebar end -->
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <hr>
+            {__CONTENT__}
+        </div>
+
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">Copyright © 2011-<?=date('Y')?> </p>
+        </footer>
+
+    </div>
+    <!-- content end -->
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__STATIC__/AmazeUI/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__STATIC__/AmazeUI/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__STATIC__/AmazeUI/assets/js/amazeui.min.js"></script>
+<script src="__STATIC__/AmazeUI/assets/js/app.js"></script>
+<script src="__STATIC__/js/jquery.form.js"></script>
+<script src="__STATIC__/js/common.js"></script>
+</body>
+</html>

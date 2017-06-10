@@ -1,0 +1,51 @@
+<form class="am-form am-form-horizontal" action="/index/admin/update" method="post">
+    <input type="hidden" name="id" value="{$api.id}"/>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">标题：</label>
+        <div class="am-u-sm-10">
+            <ul class="am-nav am-nav-pills">
+                <li><input type="text" name="title" style="width: 300px;" value="{$api.title}"></li>
+                <li>
+                    <select name="pid" style="width: 200px;">
+                        <option value="0">顶级栏目</option>
+                        {volist name="menu" id="vo"}
+                            <option value="{$vo.id}" {$api.pid==$vo.id?'selected':''}>{$vo.title}</option>
+                            {volist name="vo.son" id="vo2"}
+                            <option value="{$vo2.id}" {api.pid==$vo2.id?'selected':''}>&nbsp;&nbsp;{$vo2.title}</option>
+                                {volist name="vo2.son" id="vo3"}
+                                <option value="{$vo3.id}" {api.pid==$vo3.id?'selected':''}>&nbsp;&nbsp;&nbsp;&nbsp;{$vo3.title}</option>
+                                {/volist}
+                            {/volist}
+                        {/volist}
+                    </select>
+                </li>
+                <li><input type="text" name="sort" placeholder="排序" value="{$api.sort}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">内容：</label>
+        <div class="am-u-sm-10">
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="content" type="text/plain">
+                {$api.content}
+            </script>
+        </div>
+    </div>
+
+    <div class="am-form-group">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
+            <button type="submit" class="am-btn am-btn-default">提交</button>
+        </div>
+    </div>
+</form>
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+</script>
