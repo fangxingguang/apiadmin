@@ -79,7 +79,9 @@ class Admin extends Base
     //导出
     public function export(){
         $data = '';
-        $list = Api::all();
+        $list = Api::all(function($query){
+            $query->order('sort', 'asc');
+        });
         $tree = $this->getTree($list,0);
         $parent = 1;
         foreach($tree as $value){
