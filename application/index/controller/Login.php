@@ -15,9 +15,12 @@ class Login extends Base
     public function login(){
         $params = $this->valid([
             'name'=>'require',
-            'pwd'=>'require'
+            'pwd'=>'require',
+            'code'=>'require|captcha'
         ]);
-        if($params['name'] == 'admin' && $params['pwd'] == 'Aa123456'){
+        $name = config('admin_name');
+        $pwd = config('admin_pwd');
+        if($params['name'] == $name && $params['pwd'] == $pwd){
             session('admin',1);
             $this->redirect('/');
         }else{

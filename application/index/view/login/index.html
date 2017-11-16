@@ -42,6 +42,12 @@
             <br>
             <label>密码:</label>
             <input type="password" name="pwd" value="">
+            <br>
+            <label>验证码:</label>
+            <div>
+                <input type="text" name="code" value="" style="width: 100px;display: inline-block;">
+                <img src="{:captcha_src()}" alt="captcha" onclick="javascript:this.src = this.src+'?v='+Math.random();"/>
+            </div>
             <br />
             <div class="am-cf">
                 <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">

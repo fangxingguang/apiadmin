@@ -8,20 +8,20 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
+use  think\Env;
 return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '10.241.230.112',
+    'hostname'        =>  Env::get('db_host'),
     // 数据库名
-    'database'        => 'apiadmin',
+    'database'        => Env::get('db_database'),
     // 用户名
-    'username'        => 'root',
+    'username'        => Env::get('db_username'),
     // 密码
-    'password'        => 'singularity0618',
+    'password'        => Env::get('db_password'),
     // 端口
-    'hostport'        => '3306',
+    'hostport'        => Env::get('db_port'),
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
