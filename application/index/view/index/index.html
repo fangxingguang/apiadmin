@@ -1,35 +1,37 @@
 <?php if($api){ ?>
 {eq name="$admin" value="1"}
-    <div class="am-btn-toolbar" style="float: right;margin-right: 10px;">
+<div class="am-btn-toolbar" style="float: right;margin-right: 10px;">
     <a type="button" class="am-btn am-btn-default" href="/index/admin/update/id/{$api.id}">编辑</a>
-    <a type="button" class="am-btn am-btn-default"href="/index/admin/cp/id/{$api.id}" >复制</a>
-    <a class="am-btn am-btn-default" href="/index/admin/del/id/{$api.id}" onclick="if(confirm('确定删除?')==false)return false;">删除</a>
-    </div>
+    <a type="button" class="am-btn am-btn-default" href="/index/admin/cp/id/{$api.id}">复制</a>
+    <a class="am-btn am-btn-default" href="/index/admin/del/id/{$api.id}"
+       onclick="if(confirm('确定删除?')==false)return false;">删除</a>
+</div>
 {/eq}
 <div class="am-cf am-padding">
     <h2>{$api.title}</h2>
-        {eq name="api.pid" value="0"}
-            <ul>
-                {volist name="menu" id="vo"}
-                    {eq name="vo.id" value="$api.id"}
-                        {volist name="vo.son" id="vo2"}
-                            <li><a href="/show/{$vo2.id}">{$vo2.title}</a></li>
-                        {/volist}
-                    {/eq}
-                {/volist}
-            </ul>
-        {else/}
-            <div id="content">
-                {$api.content}
-            </div>
-        {/eq}
+    <hr/>
+    <?php if($api['pid'] == 0 && empty($api['content'])){?>
+        <ul>
+            {volist name="menu" id="vo"}
+                {eq name="vo.id" value="$api.id"}
+                    {volist name="vo.son" id="vo2"}
+                        <li><a href="/show/{$vo2.id}">{$vo2.title}</a></li>
+                    {/volist}
+                {/eq}
+            {/volist}
+        </ul>
+    <?php }else{ ?>
+        <div id="content">
+            {$api.content}
+        </div>
+    <?php } ?>
 </div>
 <?php }?>
 
 <script src="__STATIC__/ueditor/ueditor.parse.min.js"></script>
 <script>
-    uParse('#content',{
-        rootPath : '/static/ueditor/',
-        chartContainerHeight:500
+    uParse('#content', {
+        rootPath: '/static/ueditor/',
+        chartContainerHeight: 500
     })
 </script>

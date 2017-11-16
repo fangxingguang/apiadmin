@@ -1,0 +1,15 @@
+<div class="am-cf am-padding">
+    <h2>搜索结果</h2>
+    <hr/>
+    <?php if(empty($list)){ ?>
+        无结果！
+    <?php }else{ ?>
+    <dl>
+        {volist name="list" id="vo"}
+        <dt><a href="/show/{$vo.id}" target="_blank">{$vo.title}</a></dt>
+        <dd>{$vo.content}</dd>
+        {/volist}
+    </dl>
+    <?php }?>
+</div>
+

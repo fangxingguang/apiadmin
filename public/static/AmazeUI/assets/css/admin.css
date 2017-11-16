@@ -38,8 +38,7 @@ ul {
 .admin-main {
   position: relative;
   height: 100%;
-  padding-top: 51px;
-  background: #f3f3f3;
+  background: #ffffff;
 }
 
 .admin-menu {
@@ -374,4 +373,42 @@ gallery.html css
   border: none;
   width: 200px;
   margin: 0 auto;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 4px;
+}
+.am-panel-default{
+  border-color: transparent;
+}
+
+.admin-sidebar .am-accordion-title a {
+  color: #364149;
+  font-weight: 700;
+}
+.admin-sidebar .am-accordion-basic .am-active .am-accordion-title{
+  color: #364149 !important;
+}
+.admin-sidebar .am-accordion-content a {
+  color: #505d6b;
+  font-weight: 500;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #34495e;
+  font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+  font-size: 15px;
+  letter-spacing: 0;
+  margin: 0;
+  overflow-x: hidden;
 }
