@@ -412,3 +412,11 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+
+.admin-sidebar .item-active {
+  border-right: 2px solid;
+  color: #42b983;
+}
+.admin-sidebar .item-active a{
+  color: #42b983;
+}
