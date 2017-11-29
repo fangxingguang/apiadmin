@@ -66,7 +66,7 @@
                         <dd class="am-accordion-bd am-collapse <?php if(isset($api) && ($vo['id']==$api['pid'] || $vo['id']==$api['id'])){echo 'am-in';}?>">
                             <div class="am-accordion-content">
                                 {volist name="vo.son" id="vo2"}
-                                <div class="text-overflow <?php if($vo2['id']==$api['id']){echo 'item-active';}?>" style="margin: 5px 0;">  <a href="/show/{$vo2.id}"><span class="am-icon-file-text-o"></span> {$vo2.title} </a></div>
+                                <div class="text-overflow <?php if(isset($api) && $vo2['id']==$api['id']){echo 'item-active';}?>" style="margin: 5px 0;">  <a href="/show/{$vo2.id}"><span class="am-icon-file-text-o"></span> {$vo2.title} </a></div>
                                 {/volist}
                             </div>
                         </dd>

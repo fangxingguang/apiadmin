@@ -27,8 +27,8 @@ class Index extends Base
             $position = mb_stripos($content, $keywords);
             if ($position !== false) {
                 $start = $position;
-                if ($position > 50) {
-                    $start = $position - 50;
+                if ($position > 100) {
+                    $start = $position - 100;
                 }
             }
             $content = mb_substr($content, $start, 500, 'UTF-8');
